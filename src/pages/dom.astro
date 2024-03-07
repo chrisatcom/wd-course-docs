@@ -1,0 +1,26 @@
+---
+import MainLayout from '../layout/MainLayout.astro';
+import AccessingElements from '../content/topics/dom/AccessingElements.md';
+import TraversingDOM from '../content/topics/dom/TraversingTheDom.md';
+import SelectingNodelist from '../content/topics/dom/SelectingElementsFromNodelist.md';
+---
+<MainLayout title="Document Object Model">
+<section class="topic">
+  <p>Think of the DOM as a map of a web page. Just like how a map shows you streets, buildings, and landmarks, the DOM shows you all the elements on a webpage like headings, paragraphs, images, and links. Each element is like a piece of the map, and they're all connected in a tree-like structure. This "map" helps web developers interact with and change what you see on a webpage using languages like JavaScript.</p>
+</section>
+
+<!-- Accessing Elements -->
+<section class="topic">
+  <AccessingElements />
+</section>
+
+<!-- Traversing the DOM -->
+<section class="topic">
+  <TraversingDOM />
+</section>
+
+<!-- Selecting Elements from a Nodelist -->
+<section class="topic">
+  <SelectingNodelist />
+</section>
+</MainLayout>
