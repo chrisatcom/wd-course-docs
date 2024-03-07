@@ -1,0 +1,53 @@
+---
+const { title="Web Design Course Docs" } = Astro.props
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="/css/global.css" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="page">
+      <aside class="toc">
+        <h2>Topics:</h2>
+        <h3 class="dropdown-title">
+          JavaScript <button class="icon-dropdown"><img src="/images/nav-arrow.svg" alt="" /></button>
+        </h3>
+        <nav>
+          <ul>
+            <li><a href="/">JS Basics</a></li>
+            <li><a href="/dom">DOM</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/projects">Projects</a></li>
+          </ul>
+        </nav>
+
+        <h3>HTML</h3>
+        <nav>
+          <ul>
+            <li><a href="#">HTML Basics</a></li>
+            <li><a href="#">Text Elements</a></li>
+            <li><a href="#">Attributes</a></li>
+            <li><a href="#">Images</a></li>
+            <li><a href="#">Lists and Links</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section class="main-content">
+        <header class="main-header">
+          <h1>{title}</h1>
+        </header>
+
+        <main>
+          <slot />
+        </main>
+      </section>
+    </div>
+  </body>
+</html>

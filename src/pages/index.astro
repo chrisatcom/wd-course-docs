@@ -1,16 +1,28 @@
 ---
-
+import MainLayout from "../layout/MainLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout>
+	<section class="topic">
+		<p>JavaScript is a programming language that adds interactivity to your website. JavaScript is one of the most popular modern web technologies! As your JavaScript skills grow, your websites will enter a new dimension of power and creativity.</p>
+
+		<p>However, getting comfortable with JavaScript is more challenging than getting comfortable with HTML and CSS. You may have to start small, and progress gradually.</p>
+	</section>
+	<section class="topic">
+		<h2 class="title">Statements</h2>
+		<p>
+			A script is a series of instructions that a computer can follow one-by-one. Each individual instruction or step is known as a
+			<strong>statement</strong>.
+		</p>
+		<p>Statements should end with a semicolon.</p>
+	</section>
+
+	<section class="topic">
+		<h2>Comments</h2>
+		<p>
+			You should write
+			<strong>comments</strong>
+			to explain what your code does. They help make your code easier to read and understand.
+		</p>
+	</section>
+</MainLayout>

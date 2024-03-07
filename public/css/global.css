@@ -1,0 +1,212 @@
+:root {
+  --font-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font-code: monospace;
+  --clr-blue: #0286ae;
+  --clr-purple: #b9a0e9;
+  --clr-purple-transparent: hsla(261, 62%, 77%, 50%);
+}
+
+html {
+  font-family: var(--font-base);
+  background-color: #eee;
+  background-image: linear-gradient(-45deg, hsl(40, 23%, 150%), hsl(40, 23%, 92%));
+  background-repeat: no-repeat;
+  background-size: cover;
+  line-height: 1.5;
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+p {
+  font-size: 1.125rem;
+}
+
+main,
+.main-header {
+  padding: 2rem 2rem 2rem 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin: 0 0 1rem;
+}
+
+ol {
+  margin: 0;
+}
+
+/* Sidebar Table of Contents */
+.toc {
+  background-color: #222;
+  padding: 2rem;
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.toc h3,
+.toc h2 {
+  color: white;
+}
+
+.toc h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  color: var(--clr-purple);
+  margin-bottom: 1.25em;
+}
+
+.toc h3:not(:first-of-type) {
+  padding-top: 2em;
+}
+
+.toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--clr-purple-transparent);
+  margin-left: 0.25rem;
+}
+
+.toc nav li {
+  margin-bottom: 0.25em;
+}
+
+.toc a {
+  color: #ccc;
+  text-decoration: none;
+  display: block;
+  padding-block: 0.5rem;
+  font-size: 0.825rem;
+}
+
+.page {
+  position: relative;
+}
+
+.main-content {
+  margin-left: 250px;
+}
+
+/* Topic Blocks */
+.topic {
+  margin-top: 4em;
+  padding-top: 1rem;
+  position: relative;
+}
+
+.topic:not(:first-of-type)::before {
+  content: "";
+  width: 6em;
+  height: 0.5rem;
+  background-color: var(--clr-purple);
+  border-radius: 1rem;
+  position: absolute;
+  top: -1rem;
+}
+
+.topic:first-of-type {
+  margin-top: 0;
+}
+
+.topic h3 {
+  margin-top: 2.5em;
+}
+
+.topic h2 + h3 {
+  margin-top: 1em;
+}
+
+/* Code Example Blocks */
+code {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+pre {
+  position: relative;
+  margin-top: 0;
+  padding: 1rem;
+}
+
+.code-label {
+  position: absolute;
+  right: 0;
+  top: calc(8px + 0.875rem);
+  background-color: black;
+  padding: 4px 12px;
+  color: white;
+  font-size: 0.85rem;
+}
+
+.main-header + main {
+  padding-top: 0;
+}
+
+.icon-dropdown {
+  cursor: pointer;
+  height: 20px;
+  background: none;
+  border: none;
+}
+
+.icon-dropdown > img {
+  height: 1rem;
+  display: inline-block;
+  transition: transform 0.25s ease-in;
+}
+
+.dropdown-title:hover img {
+  transform: rotate(90deg);
+}
+
+.dropdown-title {
+  cursor: pointer;
+}
+
+/*
+|
+| Print Style Sheets
+|
+*/
+
+@media print {
+  .toc {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}
