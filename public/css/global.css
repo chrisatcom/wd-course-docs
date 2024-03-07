@@ -140,6 +140,21 @@ ol {
   margin-top: 0;
 }
 
+.topic h2:not(:first-child) {
+  margin-top: 2em;
+  position: relative;
+}
+
+.topic h2:not(:first-child)::before {
+  content: "";
+  width: 3rem;
+  height: 0.5rem;
+  background-color: var(--clr-blue);
+  border-radius: 1rem;
+  position: absolute;
+  top: -1rem;
+}
+
 .topic h3 {
   margin-top: 2.5em;
 }
