@@ -12,6 +12,15 @@
 
 ## Accessing Elements
 
+<figure class="codeblock">
+<figcaption>JavaScript</figcaption>
+
+```js
+var monster = "Frankenstein";
+```
+
+</figure>
+
 All the examples are using the following HTML code.
 
 ```html
