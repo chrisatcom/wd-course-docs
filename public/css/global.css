@@ -218,6 +218,10 @@ pre {
 */
 
 @media print {
+  html {
+    background: none;
+  }
+
   .toc {
     display: none;
   }
