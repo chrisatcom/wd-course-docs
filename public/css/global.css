@@ -3,6 +3,7 @@
   --font-code: monospace;
   --clr-blue: #0286ae;
   --clr-purple: #b9a0e9;
+  --clr-pink: pink;
   --clr-purple-transparent: hsla(261, 62%, 77%, 50%);
 }
 
@@ -72,8 +73,9 @@ ol {
   overflow-y: scroll;
 }
 
+.toc h2,
 .toc h3,
-.toc h2 {
+.toc h4 {
   color: white;
 }
 
@@ -88,6 +90,16 @@ ol {
 
 .toc h3:not(:first-of-type) {
   padding-top: 2em;
+}
+
+.toc h3 {
+  font-size: 1.3125rem;
+}
+
+.toc h4 {
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--clr-pink);
 }
 
 .toc ul {
@@ -109,6 +121,10 @@ ol {
   display: block;
   padding-block: 0.5rem;
   font-size: 0.825rem;
+}
+
+.toc a:hover {
+  text-decoration: underline;
 }
 
 .page {
@@ -209,6 +225,27 @@ pre {
 
 .dropdown-title {
   cursor: pointer;
+}
+
+.steps-nav {
+  background-color: var(--clr-blue);
+  padding: 1em;
+  margin-top: 3em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.steps-nav a {
+  color: white;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.2);
+  display: inline-block;
+  padding: 1rem;
+}
+
+.steps-nav a:hover {
+  text-decoration: underline;
 }
 
 /*
