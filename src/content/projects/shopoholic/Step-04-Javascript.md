@@ -4,22 +4,24 @@ All the following code will go in your `app.js` file.
 
 ## Storing the shopping list items
 
-Create a variable to store information in. In this case we'll create a variable called `shoppinglist` and set it to an array. _An array_ is used to store a list of values. This will be good to store each list item in.
-
-Since there is nothing inside the `[]`, the array is currently empty.
+Create a variable to store the list items in. In this case we'll create a variable called `shoppinglist` and set it to an array. _An array_ is used to store a list of values.
 
 ```js
 // Create an array to hold the shopping list items.
 let shoppinglist = [];
 ```
 
+Since there is nothing inside the `[]`, the array is currently empty.
+
 ## Store references to HTML elements
 
 Let's create 3 new variables and store references to the form, the input inside the form and the unordered list where our items will be listed.
 
-We can use the `id` values we put on the HTML elements to target the elements. Using `querySelector()` we'll target each one using the id. _Note_ be sure to add the `#` sign before the id name.
+We can use the `id` values we put on the HTML elements to target the elements. Using `document.querySelector()` we'll target each element using their corresponding id. _Note_ be sure to add the `#` sign before the id name.
 
-Add this code after the shoppinglist code you created earlier.
+_Example:_ If we are targeting this html element `<form id="form">` then we'll write this `document.querySelector('#form')`.
+
+Add this code after the shoppinglist code you created earlier to reference each HTML element.
 
 ```js
 // Get a reference to the form element.
@@ -36,7 +38,7 @@ let list = document.querySelector("#list");
 
 ### Adding an Event Listener
 
-To track when the form is submitted we'll add an event listener to our form variable we created. Inside the parenthesis the first item is the event we want to listen for. In this case 'submit'. The second item is the name of a function we want to run once the event happens.
+To track when the form is submitted we'll add an event listener to our `form` variable we created. Inside the parenthesis the first item is the event we want to listen for. In this case `"submit"`. The second item is the name of a function we want to run once the event happens.
 
 ```js
 // Event listener that listens for a 'submit' event and then calls the 'addItem' function.
@@ -56,7 +58,7 @@ The rest of the code in this section will go in between the function's `{ }` cur
 ```js
 // Add Item Function.
 function addItem(event) {
-  // ... rest of code here ...
+	// ... rest of code here ...
 }
 ```
 
@@ -71,17 +73,17 @@ event.preventDefault();
 
 **03 - Check to make sure the user entered text into the input field.**<br /> We don't want someone submitting the form with no information in it. Otherwise we'll just have a bunch of blank items.
 
-Add this code to the function. This is a conditional that checks to see if the value in the input field is blank or not. If it is blank then we call an `alert()` with the message we want to convey.
+Add this code to the function. This is a conditional (if/else statement) that checks to see if the value in the input field is blank or not. If it is blank then we can call an `alert()` with the message we want to convey to the.
 
 The `return` at the end tells the code to stop executing code in this function. That way the rest of the code in this function won't run.
 
 ```js
 // Make sure the input has text in it.
 if (newitem.value === "") {
-  alert("Please add a new item.");
+	alert("Please add a new item.");
 
-  // Break out of the function.
-  return;
+	// Break out of the function.
+	return;
 }
 ```
 
@@ -116,28 +118,28 @@ Here's the finished complete code block for our Add Item Function
 ```js
 // Add Item function.
 function addItem(event) {
-  // Prevent the form from submitting.
-  event.preventDefault();
+	// Prevent the form from submitting.
+	event.preventDefault();
 
-  // Make sure the input has text in it.
-  if (newitem.value === "") {
-    alert("Please add a new item.");
+	// Make sure the input has text in it.
+	if (newitem.value === "") {
+		alert("Please add a new item.");
 
-    // Break out of the function.
-    return;
-  }
+		// Break out of the function.
+		return;
+	}
 
-  // Add new item object to array.
-  shoppinglist.push(newitem.value);
+	// Add new item object to array.
+	shoppinglist.push(newitem.value);
 
-  // Clear out the input.
-  newitem.value = "";
+	// Clear out the input.
+	newitem.value = "";
 }
 ```
 
 ### Testing the Function
 
-Now that we have the function build we should test it to make sure that data from the form is being added to our array. Currently we're not adding the array items to the webpage. We'll build that functionality in a minute.
+Now that we have the function built we should test it to make sure the data from the form is being added to our array. Currently we're not adding the array items to the webpage. We'll build that functionality in a minute.
 
 We can temporarily use the console on the webpage to see if items are being added to the shopinglist array.
 
@@ -165,7 +167,7 @@ Like before first we'll create a new function to hold our logic for this process
 ```js
 // Show Items Function
 function showItems() {
-  // ... rest of code here ...
+	// ... rest of code here ...
 }
 ```
 
@@ -173,7 +175,7 @@ function showItems() {
 
 Before we continue building the `showItems()` function to show the data on the screen, we should adjust our code so that we call this new function each time a new item is added from the form.
 
-To do this we'll add the following code to the end of the `addItem()` function directly after the line `shoppinglist.push(newItem.value);`.
+To do this we'll add the following code to the end of the `addItem()` function directly after the line `newitem.value = "";`.
 
 ```js
 // Show the new item on the screen.
@@ -191,8 +193,8 @@ We'll use a diffent kind of loop for this, which hopefully is a little easier to
 ```js
 // Loop through all the array items.
 for (let item of shoppinglist) {
-  // Test, console log the results to see what we get.
-  console.log(item);
+	// Test, console log the results to see what we get.
+	console.log(item);
 }
 ```
 
@@ -222,17 +224,17 @@ The code for the completed `showItems()` function should resemble this now.
 ```js
 // Show Items Function
 function showItems() {
-  // Loop through all the array items.
-  for (let item of shoppinglist) {
-    // Create a new li element.
-    let li = document.createElement("li");
+	// Loop through all the array items.
+	for (let item of shoppinglist) {
+		// Create a new li element.
+		let li = document.createElement("li");
 
-    // Add the item text to the new li element.
-    li.innerText = item;
+		// Add the item text to the new li element.
+		li.innerText = item;
 
-    // Add/Append the new li element to the unordered list we referenced earlier.
-    list.appendChild(li);
-  }
+		// Add/Append the new li element to the unordered list we referenced earlier.
+		list.appendChild(li);
+	}
 }
 ```
 
@@ -289,13 +291,19 @@ While we're in the HTML file, let's remove the hard coded 'Dumplings' list item 
 
 Open up the `app.js` file.
 
-If you'd like to challenge yourself try accomplishing the following in your JavaScript to get the clear list button working on your own. If you have trouble or get stuck you can check out the final code for this portion on the next page.
+If you'd like to challenge yourself try accomplishing the following in your JavaScript to get the clear list button working on your own. If you have trouble or get stuck you can check out [the final code](/projects/shopoholic/05-final-js-code) for this portion on the next page.
 
 Here are the steps you'll need to do:
 
 1. Create a variable to store a reference to the `button` element you created.
 2. Add an event listener to the button for a 'click' event. This will follow the same format we did for the 'sumbit' event listener on the form (except its 'click' not 'submit').
 3. Create a callback function to hold the logic for clearing the list.
-4. In the callback function you create have the code do these two things:
-   a. Set the shoppinglist to an empty array.
-   b. Clear the data on the screen like you did for the `showItems()` function.
+4. In the callback function you create have the code do these two things: a. Set the shoppinglist to an empty array. b. Clear the data on the screen like you did for the `showItems()` function.
+
+## Final App Build
+
+Once finished your app should resemble the below video.
+
+<video controls poster="/images/projects/shopoholic/ss-09-final-app-build.png">
+  <source src="/images/projects/shopoholic/vid-00-final-app.mp4" type="video/mp4" />
+</video>
