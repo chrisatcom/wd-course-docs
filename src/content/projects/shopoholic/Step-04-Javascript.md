@@ -56,7 +56,7 @@ The rest of the code in this section will go in between the function's `{ }` cur
 ```js
 // Add Item Function.
 function addItem(event) {
-	// ... rest of code here ...
+  // ... rest of code here ...
 }
 ```
 
@@ -78,10 +78,10 @@ The `return` at the end tells the code to stop executing code in this function. 
 ```js
 // Make sure the input has text in it.
 if (newitem.value === "") {
-	alert("Please add a new item.");
+  alert("Please add a new item.");
 
-	// Break out of the function.
-	return;
+  // Break out of the function.
+  return;
 }
 ```
 
@@ -91,12 +91,18 @@ All the curly braces do is encapsulate (contain) the code for a particular block
 
 **04 - Add the new item to our shopping list array.**
 
+To add an item onto an array we can use the `push()` method associated with the array variable. In this case the `shoppinglist` array.
+
+Inside the `()` we'll add the data we want to add to the array. Here we're adding the `value` of the input element we referenced with the variable `newitem`.
+
 ```js
 // Add new item object to array.
 shoppinglist.push(newitem.value);
 ```
 
 **05 - Clearing the text from the input field once the form is submitted.**
+
+Once our data is added to the array we can set the input value to an empty string to remove the text that was previously typed in.
 
 ```js
 // Clear out the input.
@@ -110,22 +116,22 @@ Here's the finished complete code block for our Add Item Function
 ```js
 // Add Item function.
 function addItem(event) {
-	// Prevent the form from submitting.
-	event.preventDefault();
+  // Prevent the form from submitting.
+  event.preventDefault();
 
-	// Make sure the input has text in it.
-	if (newitem.value === "") {
-		alert("Please add a new item.");
+  // Make sure the input has text in it.
+  if (newitem.value === "") {
+    alert("Please add a new item.");
 
-		// Break out of the function.
-		return;
-	}
+    // Break out of the function.
+    return;
+  }
 
-	// Add new item object to array.
-	shoppinglist.push(newitem.value);
+  // Add new item object to array.
+  shoppinglist.push(newitem.value);
 
-	// Clear out the input.
-	newitem.value = "";
+  // Clear out the input.
+  newitem.value = "";
 }
 ```
 
@@ -150,14 +156,146 @@ Next part is writing some logic to show our items on the screen.
 
 ## Displaying the List on the Page
 
-Working on this...
+In order to display our `shoppinglist` array on the screen, we'll need to loop through the array and add a new `li` element to the `ul` element on the page. Sounds complicated but we can accomplish this with a few steps.
+
+### Create a Function to Show Array Items
+
+Like before first we'll create a new function to hold our logic for this process.
+
+```js
+// Show Items Function
+function showItems() {
+  // ... rest of code here ...
+}
+```
+
+### Referencing showItems() in addItem()
+
+Before we continue building the `showItems()` function to show the data on the screen, we should adjust our code so that we call this new function each time a new item is added from the form.
+
+To do this we'll add the following code to the end of the `addItem()` function directly after the line `shoppinglist.push(newItem.value);`.
+
+```js
+// Show the new item on the screen.
+showItems();
+```
+
+Now each time we add a new item it will run the code inside the showItems function and add the new item to the screen.
+
+### Looping Through the Shopping List Array
+
+The rest of the code in this section will go in between our new `showItems()` function's `{ }` curly braces.
+
+We'll use a diffent kind of loop for this, which hopefully is a little easier to understand vs. the previous ones we've used. This loop is called a 'For Of' loop.
+
+```js
+// Loop through all the array items.
+for (let item of shoppinglist) {
+  // Test, console log the results to see what we get.
+  console.log(item);
+}
+```
+
+Add a few items to the form to see if they are properly logging in the console. Here I've added Sushi and then Sashimi.
+
+!['Console Log Add Item'](/images/projects/shopoholic/ss-06-console-log-additem.png)
+
+### Creating and Adding Items to the DOM
+
+Now that we know our code is working we can remove the test `console.log()` code from the loop and add in the rest of the logic we need to create a new element.
+
+Inside our for loop add the following code.
+
+```js
+// Create a new li element.
+let li = document.createElement("li");
+
+// Add the current loop item to the li.
+li.innerText = item;
+
+// Add/Append the new li element to the unordered list we referenced earlier.
+list.appendChild(li);
+```
+
+The code for the completed `showItems()` function should resemble this now.
+
+```js
+// Show Items Function
+function showItems() {
+  // Loop through all the array items.
+  for (let item of shoppinglist) {
+    // Create a new li element.
+    let li = document.createElement("li");
+
+    // Add the item text to the new li element.
+    li.innerText = item;
+
+    // Add/Append the new li element to the unordered list we referenced earlier.
+    list.appendChild(li);
+  }
+}
+```
+
+### Fixing a Small Bug with Show Items
+
+When I test the code by inputing the following items (Sushi, Sashimi, Sake), the items are added to the screen, but they get duplicated each time a new item is submitted. The screenshot below shows the issue.
+
+!['Console Log Add Item'](/images/projects/shopoholic/ss-07-add-items-to-dom.png)
+
+One way to fix this is to clear the list on the screen each time the `showItems()` function is called. This will create a clean slate each time so duplicates aren't shown accidentally.
+
+Add a new line of code inside the `showItems()` function at the very top (right above the for loop).
+
+```js
+// First clear out any current data.
+list.innerHTML = "";
+```
+
+What this does is removes all the HTML inside the UL element.
+
+Now when we add in items to the form, the values aren't repeated each time.
+
+!['Console Log Add Item'](/images/projects/shopoholic/ss-08-add-items-to-dom-norepeat.png)
 
 ## Adding a Button to Clear the List
 
-Working on this...
+Last thing we'll add to this little app is a button to clear the entire list.
 
-## Unfinished Code
+To do this we'll add a new button in our HTML code, add an event listener to it in JavaScript and create a simple callback function to clear the list.
 
-I'm still working on finishing up the code and code explanations for this final section. I'll email everyone when it's all completed and uploaded here.
+### The HTML Portion
 
-Also this section stating unfinished code will be removed once it's complete :)
+Open up the `index.html` file.
+
+Create a `button` element with text 'Clear List' after the `ul` element and right before the closing `<div>` for `#app`.
+
+```html
+<button>Clear List</button>
+```
+
+Next let's give it an `id` of `clearbtn` so we can target it with JavaScript and add a click event listener to it.
+
+```html
+<button id="clearbtn">Clear List</button>
+```
+
+While we're in the HTML file, let's remove the hard coded 'Dumplings' list item in our `ul` element. Just delete the entire `li` element. It'll look like the below code after.
+
+```html
+<ul class="shopping-list" id="list"></ul>
+```
+
+### The JavaScript Portion
+
+Open up the `app.js` file.
+
+If you'd like to challenge yourself try accomplishing the following in your JavaScript to get the clear list button working on your own. If you have trouble or get stuck you can check out the final code for this portion on the next page.
+
+Here are the steps you'll need to do:
+
+1. Create a variable to store a reference to the `button` element you created.
+2. Add an event listener to the button for a 'click' event. This will follow the same format we did for the 'sumbit' event listener on the form (except its 'click' not 'submit').
+3. Create a callback function to hold the logic for clearing the list.
+4. In the callback function you create have the code do these two things:
+   a. Set the shoppinglist to an empty array.
+   b. Clear the data on the screen like you did for the `showItems()` function.
