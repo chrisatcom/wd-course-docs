@@ -50,6 +50,15 @@ p {
   font-size: 1.125rem;
 }
 
+a {
+  color: var(--clr-blue);
+}
+
+a:hover,
+a:focus {
+  color: var(--clr-purple);
+}
+
 main,
 .main-header {
   padding: 2rem 2rem 2rem 3rem;
@@ -62,6 +71,21 @@ h2 {
 
 ol {
   margin: 0;
+}
+
+ol > li {
+  margin-bottom: 0.5rem;
+}
+
+
+.screenshot img,
+.screenshot source {
+  display: block;
+  box-shadow: 3px 3px 16px black;
+}
+
+.--max-780 {
+  max-width: 780px;
 }
 
 /* Sidebar Table of Contents */
